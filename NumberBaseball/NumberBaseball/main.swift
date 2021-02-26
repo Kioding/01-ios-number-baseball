@@ -2,7 +2,7 @@
 import Foundation
 
 // 전역 변수 생성 (게임 중 사용자 입력, 정답 숫자, 잔여 시도 횟수)
-var threeNumbersInputByUser = [Int]()
+var threeNumbersInputByUser:[Int] = [0,0,0]
 var answerNumbers = [Int]()
 var remainingTryCount: Int = 9
 //var selectGameMeunNumber: Int
@@ -56,13 +56,11 @@ class NumberBaseballGame {
     
     // 메뉴 선택하는 함수
     func selectGameMenu() -> Int {
-        var menuSelectNumber:Int? = nil
         var flag: Int = 0
         print("1. 게임시작\n2. 게임종료")
         print("원하는 기능을 선택해주세요 : ")
         
-        menuSelectNumber = Int(readLine()!)
-        if let userNumber = menuSelectNumber {
+        if let userNumber = Int(readLine()!) {
             if userNumber == 1 {    // 게임시작
                 flag = 1
             } else if userNumber == 2 { // 게임종료
@@ -72,19 +70,20 @@ class NumberBaseballGame {
                 self.selectGameMenu()
             }
         }
+        else {
+            print("옵셔널 해제 실패, 입력이 잘못되었습니다.")
+            self.selectGameMenu()
+        }
         return flag
     }
     
     func getThreeNumbersInputByUser() -> [Int] {
-        var threeNumbersInputByUser = [Int]()
+        var threeNumbersInputByUser:[Int] = [0,0,0]
+        print("입력test")
         
-        threeNumbersInputByUser[0] = Int(readLine()!)!
-        threeNumbersInputByUser[1] = Int(readLine()!)!
-        threeNumbersInputByUser[2] = Int(readLine()!)!
-        
-//        for index in 0...2 {
-//            threeNumbersInputByUser[index] = Int(readLine()!)!
-//        }
+        for index in 0...2 {
+            threeNumbersInputByUser[index] = Int(readLine()!)!
+        }
         
             if threeNumbersInputByUser[1] == threeNumbersInputByUser[0] ||
                 threeNumbersInputByUser[2] == threeNumbersInputByUser[0] ||
@@ -99,6 +98,7 @@ class NumberBaseballGame {
     func gameStart() {
         let flag: Int = selectGameMenu()
         if flag == 2 { return }
+        
         answerNumbers = generateThreeRandomUniqueNumbers()
         while remainingTryCount != 0 {
             threeNumbersInputByUser = getThreeNumbersInputByUser()
