@@ -75,13 +75,33 @@ class NumberBaseballGame {
         return flag
     }
     
+    func getThreeNumbersInputByUser() -> [Int] {
+        var threeNumbersInputByUser = [Int]()
+        
+        threeNumbersInputByUser[0] = Int(readLine()!)!
+        threeNumbersInputByUser[1] = Int(readLine()!)!
+        threeNumbersInputByUser[2] = Int(readLine()!)!
+        
+//        for index in 0...2 {
+//            threeNumbersInputByUser[index] = Int(readLine()!)!
+//        }
+        
+            if threeNumbersInputByUser[1] == threeNumbersInputByUser[0] ||
+                threeNumbersInputByUser[2] == threeNumbersInputByUser[0] ||
+                threeNumbersInputByUser[2] == threeNumbersInputByUser[1] {
+                print("중복 숫자는 허용하지 않습니다.")
+                self.getThreeNumbersInputByUser()
+            }
+        return threeNumbersInputByUser
+        }
+
     // 게임 시작 함수
     func gameStart() {
         let flag: Int = selectGameMenu()
         if flag == 2 { return }
         answerNumbers = generateThreeRandomUniqueNumbers()
         while remainingTryCount != 0 {
-            threeNumbersInputByUser = generateThreeRandomUniqueNumbers()
+            threeNumbersInputByUser = getThreeNumbersInputByUser()
             checkStrikeOrBall(Of: threeNumbersInputByUser)
             if threeNumbersInputByUser == answerNumbers {
                 break
