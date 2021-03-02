@@ -72,9 +72,10 @@ class NumberBaseballGame {
                }
            }
        }
-    
+
     func getAndPreprocessNumbersInput() -> [Int] {
         var preprocessedNumbersInput = [Int]()
+        
         while Set(preprocessedNumbersInput).count != 3 {
             preprocessedNumbersInput = [Int]()
             print("""
@@ -114,3 +115,5 @@ class NumberBaseballGame {
 
 let numberBaseballGame = NumberBaseballGame()
 numberBaseballGame.selectGameMenu()
+
+
