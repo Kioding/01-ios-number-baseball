@@ -41,15 +41,14 @@ class NumberBaseballGame {
 
     /// remainingTryCount 또는 승자를 출력하는 함수
     func printGameStatusOrWinner(strikeCount: Int, remainingTryCount: Int) {
+        print("------------------------------")
+        
         if strikeCount == 3 {
             print("사용자 승리...!")
         } else if remainingTryCount == 0 {
             print("컴퓨터 승리...!")
         } else {
-            print("""
-                    ------------------------------
-                    남은 기회 : \(remainingTryCount)
-                    """)
+            print("남은 기회 : \(remainingTryCount)")
         }
     }
 
@@ -70,7 +69,10 @@ class NumberBaseballGame {
                    case "1": startGame()
                    case "2": return
                    default:
-                       print("입력값이 잘못되었습니다.")
+                       print("""
+                                ------------------------------
+                                입력값이 잘못되었습니다.
+                                """)
                    }
                }
            }
@@ -92,7 +94,10 @@ class NumberBaseballGame {
                     if let oneIntegerElementFromPreprocessingNumbersInput: Int = Int(index) {
                         preprocessedNumbersInput.append(oneIntegerElementFromPreprocessingNumbersInput)
                     } else {
-                        print("입력이 잘못되었습니다.")
+                        print("""
+                                 ------------------------------
+                                 입력값이 잘못되었습니다.
+                                 """)
                         break
                     }
                 }
