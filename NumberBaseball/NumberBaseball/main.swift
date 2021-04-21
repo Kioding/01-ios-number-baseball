@@ -46,7 +46,10 @@ class NumberBaseballGame {
         } else if remainingTryCount == 0 {
             print("컴퓨터 승리...!")
         } else {
-            print("남은 기회 : \(remainingTryCount)")
+            print("""
+                    ------------------------------
+                    남은 기회 : \(remainingTryCount)
+                    """)
         }
     }
 
